@@ -7,6 +7,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 import ru.com.notnull.mygame.beans.Anim;
 import ru.com.notnull.mygame.beans.ImgTexture;
@@ -16,11 +18,17 @@ public class GameScreen implements Screen {
     private SpriteBatch spriteBatch;
     private ImgTexture texture;
     private Anim anim;
+    private Rectangle menuRect;
+    private ShapeRenderer shapeRenderer;
+
     public GameScreen(Game game) {
         this.game = game;
         spriteBatch = new SpriteBatch();
-        texture = new ImgTexture("relief.jpg",1);
-        anim = new Anim("atlas/RUN.atlas","Knight_03__RUN",  Animation.PlayMode.LOOP,1/30f,0,70,3);
+        texture = new ImgTexture("relief.jpg", 1);
+        anim = new Anim("atlas/RUN.atlas", "Knight_03__RUN", Animation.PlayMode.LOOP, 1 / 30f, 0, 70, 3);
+
+        menuRect = new Rectangle(0, 70, anim.getWidth(), anim.getHeight());
+        shapeRenderer = new ShapeRenderer();
     }
 
     @Override
@@ -34,10 +42,16 @@ public class GameScreen implements Screen {
 
         ScreenUtils.clear(Color.BLACK);
 
+
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
-            dispose();
-            anim.dispose();
-            game.setScreen(new MenuScreen(game));
+            exitScreen();
+        }
+        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
+            int x = Gdx.input.getX();
+            int y = Gdx.graphics.getHeight() - Gdx.input.getY();
+            if (menuRect.contains(x, y)) {
+                exitScreen();
+            }
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) anim.setLookForward(false);
@@ -53,11 +67,13 @@ public class GameScreen implements Screen {
             anim.moveLeft();
         }
 
+
         spriteBatch.begin();
-        spriteBatch.draw(texture.getTexture(), 0, 0,texture.getWidth(),texture.getHeight());
+        spriteBatch.draw(texture.getTexture(), 0, 0, texture.getWidth(), texture.getHeight());
         spriteBatch.draw(anim.getFrame(), anim.getPositionX(), anim.getPositionY(), anim.getWidth(), anim.getHeight());
         spriteBatch.end();
 
+        menuRect.set(anim.getPositionX(), anim.getPositionY(), anim.getWidth(), anim.getHeight());
     }
 
     @Override
@@ -78,6 +94,12 @@ public class GameScreen implements Screen {
     @Override
     public void hide() {
 
+    }
+
+    private void exitScreen() {
+        dispose();
+        anim.dispose();
+        game.setScreen(new MenuScreen(game));
     }
 
     @Override
