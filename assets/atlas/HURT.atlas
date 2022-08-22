@@ -1,0 +1,76 @@
+
+HURT.png
+size: 1024, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+Knight_03__HURT
+  rotate: false
+  xy: 0, 2
+  size: 104, 91
+  orig: 300, 167
+  offset: 103, 50
+  index: 6
+Knight_03__HURT
+  rotate: false
+  xy: 104, 4
+  size: 104, 89
+  orig: 300, 167
+  offset: 107, 51
+  index: 3
+Knight_03__HURT
+  rotate: false
+  xy: 208, 4
+  size: 104, 89
+  orig: 300, 167
+  offset: 107, 51
+  index: 7
+Knight_03__HURT
+  rotate: false
+  xy: 312, 2
+  size: 104, 91
+  orig: 300, 167
+  offset: 103, 50
+  index: 4
+Knight_03__HURT
+  rotate: false
+  xy: 416, 6
+  size: 102, 87
+  orig: 300, 167
+  offset: 112, 51
+  index: 8
+Knight_03__HURT
+  rotate: false
+  xy: 518, 0
+  size: 102, 93
+  orig: 300, 167
+  offset: 101, 48
+  index: 5
+Knight_03__HURT
+  rotate: false
+  xy: 620, 6
+  size: 102, 87
+  orig: 300, 167
+  offset: 112, 51
+  index: 2
+Knight_03__HURT
+  rotate: false
+  xy: 722, 10
+  size: 100, 83
+  orig: 300, 167
+  offset: 118, 52
+  index: 9
+Knight_03__HURT
+  rotate: false
+  xy: 822, 10
+  size: 100, 83
+  orig: 300, 167
+  offset: 118, 52
+  index: 1
+Knight_03__HURT
+  rotate: false
+  xy: 922, 11
+  size: 96, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 0

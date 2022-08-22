@@ -1,0 +1,76 @@
+
+ATTACK.png
+size: 1024, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+Knight_03__ATTACK
+  rotate: false
+  xy: 0, 12
+  size: 102, 88
+  orig: 300, 167
+  offset: 122, 52
+  index: 6
+Knight_03__ATTACK
+  rotate: false
+  xy: 102, 13
+  size: 100, 87
+  orig: 300, 167
+  offset: 124, 52
+  index: 7
+Knight_03__ATTACK
+  rotate: false
+  xy: 202, 15
+  size: 99, 85
+  orig: 300, 167
+  offset: 125, 52
+  index: 8
+Knight_03__ATTACK
+  rotate: false
+  xy: 301, 16
+  size: 96, 84
+  orig: 300, 167
+  offset: 127, 52
+  index: 9
+Knight_03__ATTACK
+  rotate: false
+  xy: 397, 18
+  size: 95, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 0
+Knight_03__ATTACK
+  rotate: false
+  xy: 492, 13
+  size: 94, 87
+  orig: 300, 167
+  offset: 120, 51
+  index: 5
+Knight_03__ATTACK
+  rotate: false
+  xy: 586, 11
+  size: 79, 89
+  orig: 300, 167
+  offset: 124, 52
+  index: 1
+Knight_03__ATTACK
+  rotate: false
+  xy: 665, 0
+  size: 71, 100
+  orig: 300, 167
+  offset: 119, 51
+  index: 4
+Knight_03__ATTACK
+  rotate: false
+  xy: 736, 11
+  size: 67, 89
+  orig: 300, 167
+  offset: 117, 51
+  index: 3
+Knight_03__ATTACK
+  rotate: false
+  xy: 803, 0
+  size: 65, 100
+  orig: 300, 167
+  offset: 121, 51
+  index: 2

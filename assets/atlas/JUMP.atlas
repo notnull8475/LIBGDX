@@ -1,0 +1,76 @@
+
+JUMP.png
+size: 256, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+Knight_03__JUMP
+  rotate: false
+  xy: 0, 165
+  size: 96, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 0
+Knight_03__JUMP
+  rotate: false
+  xy: 0, 83
+  size: 95, 82
+  orig: 300, 167
+  offset: 125, 55
+  index: 9
+Knight_03__JUMP
+  rotate: false
+  xy: 0, 83
+  size: 95, 82
+  orig: 300, 167
+  offset: 125, 55
+  index: 1
+Knight_03__JUMP
+  rotate: false
+  xy: 0, 0
+  size: 89, 83
+  orig: 300, 167
+  offset: 122, 57
+  index: 8
+Knight_03__JUMP
+  rotate: false
+  xy: 0, 0
+  size: 89, 83
+  orig: 300, 167
+  offset: 122, 57
+  index: 2
+Knight_03__JUMP
+  rotate: false
+  xy: 96, 169
+  size: 82, 78
+  orig: 300, 167
+  offset: 113, 71
+  index: 5
+Knight_03__JUMP
+  rotate: false
+  xy: 89, 1
+  size: 81, 82
+  orig: 300, 167
+  offset: 118, 61
+  index: 3
+Knight_03__JUMP
+  rotate: false
+  xy: 89, 1
+  size: 81, 82
+  orig: 300, 167
+  offset: 118, 61
+  index: 7
+Knight_03__JUMP
+  rotate: false
+  xy: 96, 86
+  size: 80, 83
+  orig: 300, 167
+  offset: 115, 66
+  index: 6
+Knight_03__JUMP
+  rotate: false
+  xy: 96, 86
+  size: 80, 83
+  orig: 300, 167
+  offset: 115, 66
+  index: 4
