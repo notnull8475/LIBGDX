@@ -1,0 +1,76 @@
+
+DIE.png
+size: 1024, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+Knight_03__DIE
+  rotate: false
+  xy: 0, 38
+  size: 116, 90
+  orig: 300, 167
+  offset: 97, 48
+  index: 4
+Knight_03__DIE
+  rotate: false
+  xy: 116, 64
+  size: 116, 64
+  orig: 300, 167
+  offset: 87, 28
+  index: 9
+Knight_03__DIE
+  rotate: false
+  xy: 116, 0
+  size: 116, 64
+  orig: 300, 167
+  offset: 87, 28
+  index: 8
+Knight_03__DIE
+  rotate: false
+  xy: 232, 37
+  size: 115, 91
+  orig: 300, 167
+  offset: 100, 49
+  index: 3
+Knight_03__DIE
+  rotate: false
+  xy: 347, 44
+  size: 115, 84
+  orig: 300, 167
+  offset: 94, 44
+  index: 5
+Knight_03__DIE
+  rotate: false
+  xy: 462, 66
+  size: 113, 62
+  orig: 300, 167
+  offset: 91, 37
+  index: 7
+Knight_03__DIE
+  rotate: false
+  xy: 575, 39
+  size: 112, 89
+  orig: 300, 167
+  offset: 106, 50
+  index: 2
+Knight_03__DIE
+  rotate: false
+  xy: 687, 59
+  size: 109, 69
+  orig: 300, 167
+  offset: 97, 44
+  index: 6
+Knight_03__DIE
+  rotate: false
+  xy: 796, 43
+  size: 105, 85
+  orig: 300, 167
+  offset: 115, 51
+  index: 1
+Knight_03__DIE
+  rotate: false
+  xy: 901, 46
+  size: 96, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 0

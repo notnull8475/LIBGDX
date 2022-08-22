@@ -1,0 +1,76 @@
+
+WALK.png
+size: 1024, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+Knight_03__WALK
+  rotate: false
+  xy: 0, 0
+  size: 100, 83
+  orig: 300, 167
+  offset: 123, 50
+  index: 0
+Knight_03__WALK
+  rotate: false
+  xy: 100, 0
+  size: 99, 83
+  orig: 300, 167
+  offset: 124, 50
+  index: 9
+Knight_03__WALK
+  rotate: false
+  xy: 199, 0
+  size: 99, 83
+  orig: 300, 167
+  offset: 124, 50
+  index: 1
+Knight_03__WALK
+  rotate: false
+  xy: 298, 1
+  size: 98, 82
+  orig: 300, 167
+  offset: 124, 51
+  index: 8
+Knight_03__WALK
+  rotate: false
+  xy: 396, 1
+  size: 98, 82
+  orig: 300, 167
+  offset: 124, 51
+  index: 2
+Knight_03__WALK
+  rotate: false
+  xy: 494, 1
+  size: 96, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 6
+Knight_03__WALK
+  rotate: false
+  xy: 590, 1
+  size: 96, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 3
+Knight_03__WALK
+  rotate: false
+  xy: 686, 1
+  size: 96, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 7
+Knight_03__WALK
+  rotate: false
+  xy: 782, 1
+  size: 96, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 4
+Knight_03__WALK
+  rotate: false
+  xy: 878, 0
+  size: 93, 83
+  orig: 300, 167
+  offset: 126, 52
+  index: 5

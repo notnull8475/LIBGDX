@@ -1,0 +1,76 @@
+
+IDLE.png
+size: 1024, 128
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+Knight_03__IDLE
+  rotate: false
+  xy: 0, 1
+  size: 98, 81
+  orig: 300, 167
+  offset: 124, 52
+  index: 5
+Knight_03__IDLE
+  rotate: false
+  xy: 98, 0
+  size: 98, 82
+  orig: 300, 167
+  offset: 124, 52
+  index: 7
+Knight_03__IDLE
+  rotate: false
+  xy: 196, 1
+  size: 98, 81
+  orig: 300, 167
+  offset: 124, 52
+  index: 4
+Knight_03__IDLE
+  rotate: false
+  xy: 294, 1
+  size: 98, 81
+  orig: 300, 167
+  offset: 124, 52
+  index: 6
+Knight_03__IDLE
+  rotate: false
+  xy: 392, 0
+  size: 98, 82
+  orig: 300, 167
+  offset: 124, 52
+  index: 3
+Knight_03__IDLE
+  rotate: false
+  xy: 490, 0
+  size: 97, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 8
+Knight_03__IDLE
+  rotate: false
+  xy: 587, 0
+  size: 97, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 2
+Knight_03__IDLE
+  rotate: false
+  xy: 684, 0
+  size: 96, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 0
+Knight_03__IDLE
+  rotate: false
+  xy: 780, 0
+  size: 96, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 9
+Knight_03__IDLE
+  rotate: false
+  xy: 876, 0
+  size: 96, 82
+  orig: 300, 167
+  offset: 125, 52
+  index: 1
