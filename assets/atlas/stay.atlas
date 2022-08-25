@@ -1,0 +1,13 @@
+
+stay.png
+size: 68, 94
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+p1_front
+  rotate: false
+  xy: 0, 2
+  size: 66, 92
+  orig: 66, 92
+  offset: 0, 0
+  index: -1

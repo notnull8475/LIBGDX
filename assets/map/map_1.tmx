@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="27" height="12" tilewidth="70" tileheight="70" infinite="0" nextlayerid="7" nextobjectid="4">
+ <tileset firstgid="1" source="base.tsx"/>
+ <tileset firstgid="177" source="buildings.tsx"/>
+ <objectgroup id="5" name="cam">
+  <object id="1" name="camPoint" x="284.848" y="360.606">
+   <point/>
+  </object>
+  <object id="2" name="perimetr" x="-6.06061" y="-6.06061" width="1890.91" height="848.485"/>
+  <object id="3" x="-63.6364" y="57.5758"/>
+ </objectgroup>
+ <imagelayer id="4" name="bg" repeatx="1" repeaty="1">
+  <image source="bg.png" width="256" height="256"/>
+ </imagelayer>
+ <layer id="6" name="houses" width="27" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAu2I6DpjZ4D8TvsOAPNLLrFBAfQcKngfgtDexiwGEXrcBxID6BhE/S0K5RMAoGOwAApJ8WMQ==
+  </data>
+ </layer>
+ <layer id="2" name="windows_doors" width="27" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFgxHsh9L8jLS3azftrRgFo2BIAAAMpgGL
+  </data>
+ </layer>
+ <layer id="1" name="ground" width="27" height="12">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4B4IICEiQU+QBxMAJMLuNHs8QXidAKYGMCExHbB4l5i7EnHoo8Y/xNjLjbsRCSOQcK0tisKCQ8FuwDD6DEh
+  </data>
+ </layer>
+</map>

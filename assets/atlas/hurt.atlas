@@ -1,0 +1,13 @@
+
+hurt.png
+size: 71, 94
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+p1_hurt
+  rotate: false
+  xy: 0, 2
+  size: 69, 92
+  orig: 69, 92
+  offset: 0, 0
+  index: -1
