@@ -1,0 +1,419 @@
+
+items.png
+size: 1441, 438
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+bomb
+  rotate: false
+  xy: 0, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+bombFlash
+  rotate: false
+  xy: 131, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+bush
+  rotate: false
+  xy: 262, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+buttonBlue
+  rotate: false
+  xy: 393, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+buttonBlue_pressed
+  rotate: false
+  xy: 524, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+buttonGreen
+  rotate: false
+  xy: 655, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+buttonGreen_pressed
+  rotate: false
+  xy: 786, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+buttonRed
+  rotate: false
+  xy: 917, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+buttonRed_pressed
+  rotate: false
+  xy: 1048, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+buttonYellow
+  rotate: false
+  xy: 1179, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+buttonYellow_pressed
+  rotate: false
+  xy: 1310, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+cactus
+  rotate: false
+  xy: 0, 75
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+chain
+  rotate: false
+  xy: 131, 75
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+cloud1
+  rotate: false
+  xy: 262, 75
+  size: 128, 71
+  orig: 128, 71
+  offset: 0, 0
+  index: -1
+cloud2
+  rotate: false
+  xy: 393, 75
+  size: 129, 71
+  orig: 129, 71
+  offset: 0, 0
+  index: -1
+cloud3
+  rotate: false
+  xy: 524, 75
+  size: 129, 71
+  orig: 129, 71
+  offset: 0, 0
+  index: -1
+coinBronze
+  rotate: false
+  xy: 655, 75
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+coinGold
+  rotate: false
+  xy: 786, 75
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+coinSilver
+  rotate: false
+  xy: 917, 75
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+fireball
+  rotate: false
+  xy: 1048, 75
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flagBlue
+  rotate: false
+  xy: 1179, 75
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flagBlue2
+  rotate: false
+  xy: 1310, 75
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flagBlueHanging
+  rotate: false
+  xy: 0, 148
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flagGreen
+  rotate: false
+  xy: 131, 148
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flagGreen2
+  rotate: false
+  xy: 262, 148
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flagGreenHanging
+  rotate: false
+  xy: 393, 148
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flagRed
+  rotate: false
+  xy: 524, 148
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flagRed2
+  rotate: false
+  xy: 655, 148
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flagRedHanging
+  rotate: false
+  xy: 786, 148
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flagYellow
+  rotate: false
+  xy: 917, 148
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flagYellow2
+  rotate: false
+  xy: 1048, 148
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flagYellowHanging
+  rotate: false
+  xy: 1179, 148
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+gemBlue
+  rotate: false
+  xy: 1310, 148
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+gemGreen
+  rotate: false
+  xy: 0, 221
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+gemRed
+  rotate: false
+  xy: 131, 221
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+gemYellow
+  rotate: false
+  xy: 262, 221
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+keyBlue
+  rotate: false
+  xy: 393, 221
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+keyGreen
+  rotate: false
+  xy: 524, 221
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+keyRed
+  rotate: false
+  xy: 655, 221
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+keyYellow
+  rotate: false
+  xy: 786, 221
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+mushroomBrown
+  rotate: false
+  xy: 917, 221
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+mushroomRed
+  rotate: false
+  xy: 1048, 221
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+particleBrick1a
+  rotate: false
+  xy: 1179, 221
+  size: 19, 14
+  orig: 19, 14
+  offset: 0, 0
+  index: -1
+particleBrick1b
+  rotate: false
+  xy: 1310, 221
+  size: 21, 21
+  orig: 21, 21
+  offset: 0, 0
+  index: -1
+particleBrick2a
+  rotate: false
+  xy: 0, 294
+  size: 19, 14
+  orig: 19, 14
+  offset: 0, 0
+  index: -1
+particleBrick2b
+  rotate: false
+  xy: 131, 294
+  size: 21, 21
+  orig: 21, 21
+  offset: 0, 0
+  index: -1
+plant
+  rotate: false
+  xy: 262, 294
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+plantPurple
+  rotate: false
+  xy: 393, 294
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+rock
+  rotate: false
+  xy: 524, 294
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+snowhill
+  rotate: false
+  xy: 655, 294
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+spikes
+  rotate: false
+  xy: 786, 294
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+springboardDown
+  rotate: false
+  xy: 917, 294
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+springboardUp
+  rotate: false
+  xy: 1048, 294
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+star
+  rotate: false
+  xy: 1179, 294
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+switchLeft
+  rotate: false
+  xy: 1310, 294
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+switchMid
+  rotate: false
+  xy: 0, 367
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+switchRight
+  rotate: false
+  xy: 131, 367
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+weight
+  rotate: false
+  xy: 262, 367
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+weightChained
+  rotate: false
+  xy: 393, 367
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
