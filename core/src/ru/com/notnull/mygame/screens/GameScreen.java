@@ -15,7 +15,10 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
+import ru.com.notnull.mygame.PhysX;
 import ru.com.notnull.mygame.beans.Anim;
 import ru.com.notnull.mygame.beans.ImgTexture;
 
@@ -29,7 +32,9 @@ public class GameScreen implements Screen {
     private OrthographicCamera camera;
     private TiledMap map;
     private OrthogonalTiledMapRenderer mapRenderer;
-    private Rectangle mapSize;
+    private PhysX physX;
+    private Body body;
+    private final Rectangle bodyRectangle;
     private int speed = 3;
 
     public GameScreen(Game game) {
@@ -41,17 +46,28 @@ public class GameScreen implements Screen {
         map = new TmxMapLoader().load("map/map_1.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map);
 
-        RectangleMapObject rmo = (RectangleMapObject) map.getLayers().get("cam").getObjects().get("camPoint");
-        camera.position.x = rmo.getRectangle().x;
-        camera.position.y = rmo.getRectangle().y;
 
-        mapSize = ((RectangleMapObject) map.getLayers().get("cam").getObjects().get("perimetr")).getRectangle();
 
         anim = new Anim("atlas/walk.atlas", "p1_walk", Animation.PlayMode.LOOP, 1 / 30f, 0, 280, speed);
 
 
         menuRect = new Rectangle(0, 70, anim.getWidth(), anim.getHeight());
         shapeRenderer = new ShapeRenderer();
+
+        physX = new PhysX();
+        RectangleMapObject tmp = (RectangleMapObject) map.getLayers().get("hero").getObjects().get("hero");
+        bodyRectangle = tmp.getRectangle();
+        body = physX.addObject(tmp);
+        camera.position.x = body.getPosition().x;
+        camera.position.y = body.getPosition().y;
+
+        Array<RectangleMapObject> objects = map.getLayers().get("static").getObjects().getByType(RectangleMapObject.class);
+        objects.addAll(map.getLayers().get("water").getObjects().getByType(RectangleMapObject.class));
+        objects.addAll(map.getLayers().get("dynamic").getObjects().getByType(RectangleMapObject.class));
+        objects.addAll(map.getLayers().get("exit").getObjects().getByType(RectangleMapObject.class));
+        for (int i = 0; i < objects.size; i++) {
+            physX.addObject(objects.get(i));
+        }
     }
 
     @Override
@@ -69,20 +85,14 @@ public class GameScreen implements Screen {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             exitScreen();
         }
-        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
-            int x = Gdx.input.getX();
-            int y = Gdx.graphics.getHeight() - Gdx.input.getY();
-            if (menuRect.contains(x, y)) {
-                exitScreen();
-            }
-        }
 
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             camera.position.x -= speed;
             if (anim.isLookForward()){
                 anim.setLookForward(false);
             }
-            anim.moveLeft();
+//            anim.moveLeft();
+            body.applyForceToCenter(new Vector2(-1000000,0),true);
 //            anim.setLookForward(false);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
@@ -90,33 +100,44 @@ public class GameScreen implements Screen {
             if (!anim.isLookForward()){
                 anim.setLookForward(true);
             }
-            anim.moveRight();
+//            anim.moveRight();
+            body.applyForceToCenter(new Vector2(1000000,0),true);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+        if (Gdx.input.isKeyPressed(Input.Keys.UP))     body.applyForceToCenter(new Vector2(0,1000000),true);
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN))     body.applyForceToCenter(new Vector2(0,-1000000),true);
+
+
+
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_0) && camera.zoom >0) {
             camera.zoom -= 0.01f;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN) && camera.zoom > 0) {
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_1) && camera.zoom < 3) {
             camera.zoom += 0.01f;
         }
 //        if (anim.getPositionX() + anim.getWidth() >= Gdx.graphics.getWidth()) anim.setLookForward(false);
 //        if (anim.getPositionX() <= 0) anim.setLookForward(true);
-        if (!mapSize.contains(anim.getPositionX() + anim.getWidth(),anim.getPositionY())) anim.setLookForward(!anim.isLookForward());
         if (anim.getFrame().isFlipX() && anim.isLookForward()) anim.getFrame().flip(true, false);
         if (!anim.getFrame().isFlipX() && !anim.isLookForward()) anim.getFrame().flip(true, false);
 
-        camera.position.x = anim.getPositionX();
-        camera.position.y = anim.getPositionY();
+        camera.position.x = body.getPosition().x;
+        camera.position.y = body.getPosition().y;
         mapRenderer.setView(camera);
         mapRenderer.render();
+
+        physX.step();
+        physX.debugDraw(camera);
 
         spriteBatch.setProjectionMatrix(camera.combined);
         spriteBatch.begin();
 //        spriteBatch.draw(texture.getTexture(), 0, 0, texture.getWidth(), texture.getHeight());
-        spriteBatch.draw(anim.getFrame(), anim.getPositionX(), anim.getPositionY(), anim.getWidth(), anim.getHeight());
+        bodyRectangle.x = body.getPosition().x - bodyRectangle.width/2;
+        bodyRectangle.y = body.getPosition().y - bodyRectangle.height/2;
+        spriteBatch.draw(anim.getFrame(), bodyRectangle.x, bodyRectangle.y, bodyRectangle.width, bodyRectangle.height);
         spriteBatch.end();
 
 
         menuRect.set(anim.getPositionX(), anim.getPositionY(), anim.getWidth(), anim.getHeight());
+
 
     }
 
