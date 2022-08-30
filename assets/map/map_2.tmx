@@ -163,7 +163,7 @@
     <property name="density" value="0"/>
     <property name="friction" value="1"/>
     <property name="gravityScale" value="1.0"/>
-    <property name="restitution" value="0.3"/>
+    <property name="restitution" value="0"/>
    </properties>
   </object>
  </objectgroup>

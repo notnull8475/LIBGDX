@@ -5,54 +5,59 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import ru.com.notnull.mygame.PhysX;
-import ru.com.notnull.mygame.Anim;
+import ru.com.notnull.mygame.model.GameActor;
+import ru.com.notnull.mygame.model.GameObject;
 
-public class GameScreen implements Screen {
+import java.util.HashSet;
+import java.util.List;
+
+public class Game2Screen implements Screen {
     private final Game game;
     private final SpriteBatch spriteBatch;
-    private final Anim anim;
     private final OrthographicCamera camera;
     private final OrthogonalTiledMapRenderer mapRenderer;
     private final PhysX physX;
-    private final Body body;
-    private final Rectangle bodyRectangle;
-
-    public GameScreen(Game game) {
+    GameActor actor;
+    HashSet<GameObject> boxes;
+    TextureAtlas boxTextures;
+    TextureAtlas lollipopTextures;
+    public Game2Screen(Game game) {
 
         this.game = game;
         spriteBatch = new SpriteBatch();
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         TiledMap map = new TmxMapLoader().load("map/map_2.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map);
-        anim = new Anim("atlas/walk.atlas", "p1_walk", Animation.PlayMode.LOOP, 1 / 30f);
         physX = new PhysX();
+        actor = new GameActor(map, physX, spriteBatch, camera);
+        boxTextures = new TextureAtlas("items/boxes.atlas");
+        lollipopTextures = new TextureAtlas("items/lollipop.atlas");
 
         camera.zoom = 2.0f;
-        RectangleMapObject tmp = (RectangleMapObject) map.getLayers().get("hero").getObjects().get("hero");
-        bodyRectangle = tmp.getRectangle();
-        body = physX.addObject(tmp);
-        body.setGravityScale(20);
-        camera.position.x = body.getPosition().x;
-        camera.position.y = body.getPosition().y;
 
         Array<RectangleMapObject> objects = map.getLayers().get("static").getObjects().getByType(RectangleMapObject.class);
         objects.addAll(map.getLayers().get("water").getObjects().getByType(RectangleMapObject.class));
-        objects.addAll(map.getLayers().get("dynamic").getObjects().getByType(RectangleMapObject.class));
         objects.addAll(map.getLayers().get("exit").getObjects().getByType(RectangleMapObject.class));
         for (int i = 0; i < objects.size; i++) {
             physX.addObject(objects.get(i));
+        }
+        boxes = new HashSet<>();
+        MapObjects mapObjects = map.getLayers().get("dynamic").getObjects();
+        for (MapObject m : mapObjects) {
+            if (m.getName().equals("box")) boxes.add(new GameObject(physX,spriteBatch, boxTextures.findRegion("boxAlt"),m));
         }
     }
 
@@ -63,7 +68,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        camera.update();
+        ScreenUtils.clear(192, 232, 236, 256);
+
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_0) && camera.zoom > 0) {
             camera.zoom -= 0.01f;
         }
@@ -72,29 +78,11 @@ public class GameScreen implements Screen {
         }
 
 
-        anim.setTime(Gdx.graphics.getDeltaTime());
-
-        ScreenUtils.clear(192, 232, 236, 256);
-
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             exitScreen();
         }
 
-        int speed = 3;
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            body.applyForceToCenter(new Vector2(-1000000, 0), true);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            body.applyForceToCenter(new Vector2(1000000, 0), true);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) body.applyForceToCenter(new Vector2(0, 1000000), true);
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) body.applyForceToCenter(new Vector2(0, -1000000), true);
 
-        if (anim.getFrame().isFlipX() && anim.isLookForward()) anim.getFrame().flip(true, false);
-        if (!anim.getFrame().isFlipX() && !anim.isLookForward()) anim.getFrame().flip(true, false);
-
-        camera.position.x = body.getPosition().x;
-        camera.position.y = body.getPosition().y;
         mapRenderer.setView(camera);
         mapRenderer.render();
 
@@ -103,9 +91,13 @@ public class GameScreen implements Screen {
 
         spriteBatch.setProjectionMatrix(camera.combined);
         spriteBatch.begin();
-        bodyRectangle.x = body.getPosition().x - bodyRectangle.width / 2;
-        bodyRectangle.y = body.getPosition().y - bodyRectangle.height / 2;
-        spriteBatch.draw(anim.getFrame(), bodyRectangle.x, bodyRectangle.y, bodyRectangle.width, bodyRectangle.height);
+
+        actor.render(Gdx.input);
+        for (GameObject o :
+                boxes) {
+                     o.render();
+        }
+
         spriteBatch.end();
     }
 
@@ -133,13 +125,17 @@ public class GameScreen implements Screen {
 
     private void exitScreen() {
         this.dispose();
-        anim.dispose();
         game.setScreen(new MenuScreen(game));
+
     }
 
     @Override
     public void dispose() {
         this.spriteBatch.dispose();
-        this.anim.dispose();
+        actor.dispose();
+        boxTextures.dispose();
+        lollipopTextures.dispose();
     }
 }
+
+

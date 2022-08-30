@@ -48,7 +48,7 @@ public class MenuScreen implements Screen {
             int y = Gdx.graphics.getHeight()-Gdx.input.getY();
             if (startRect.contains(x, y)) {
                 dispose();
-                game.setScreen(new GameScreen(game));
+                game.setScreen(new Game2Screen(game));
             }
 
         }

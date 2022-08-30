@@ -36,7 +36,6 @@ public class PhysX {
 
 
         polygonShape.setAsBox(rectangle.width / 2, rectangle.height / 2);
-
         fixtureDef.shape = polygonShape;
 
         Object o = rectangleMapObject.getProperties().get("friction");
