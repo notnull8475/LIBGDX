@@ -4,11 +4,9 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -19,42 +17,29 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import ru.com.notnull.mygame.PhysX;
-import ru.com.notnull.mygame.beans.Anim;
-import ru.com.notnull.mygame.beans.ImgTexture;
+import ru.com.notnull.mygame.Anim;
 
 public class GameScreen implements Screen {
-    private Game game;
-    private SpriteBatch spriteBatch;
-    private ImgTexture texture;
-    private Anim anim;
-    private Rectangle menuRect;
-    private ShapeRenderer shapeRenderer;
-    private OrthographicCamera camera;
-    private TiledMap map;
-    private OrthogonalTiledMapRenderer mapRenderer;
-    private PhysX physX;
-    private Body body;
+    private final Game game;
+    private final SpriteBatch spriteBatch;
+    private final Anim anim;
+    private final OrthographicCamera camera;
+    private final OrthogonalTiledMapRenderer mapRenderer;
+    private final PhysX physX;
+    private final Body body;
     private final Rectangle bodyRectangle;
-    private int speed = 3;
 
     public GameScreen(Game game) {
+
         this.game = game;
         spriteBatch = new SpriteBatch();
-//        texture = new ImgTexture("relief.jpg", 1);
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        camera.zoom = 2.0f;
-        map = new TmxMapLoader().load("map/map_1.tmx");
+        TiledMap map = new TmxMapLoader().load("map/map_2.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map);
-
-
-
-        anim = new Anim("atlas/walk.atlas", "p1_walk", Animation.PlayMode.LOOP, 1 / 30f, 0, 280, speed);
-
-
-        menuRect = new Rectangle(0, 70, anim.getWidth(), anim.getHeight());
-        shapeRenderer = new ShapeRenderer();
-
+        anim = new Anim("atlas/walk.atlas", "p1_walk", Animation.PlayMode.LOOP, 1 / 30f);
         physX = new PhysX();
+
+        camera.zoom = 2.0f;
         RectangleMapObject tmp = (RectangleMapObject) map.getLayers().get("hero").getObjects().get("hero");
         bodyRectangle = tmp.getRectangle();
         body = physX.addObject(tmp);
@@ -78,44 +63,43 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         camera.update();
-        anim.setTime(Gdx.graphics.getDeltaTime());
-
-        ScreenUtils.clear(Color.BLACK);
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
-            exitScreen();
-        }
-
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            camera.position.x -= speed;
-            if (anim.isLookForward()){
-                anim.setLookForward(false);
-            }
-//            anim.moveLeft();
-            body.applyForceToCenter(new Vector2(-1000000,0),true);
-//            anim.setLookForward(false);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            camera.position.x += speed;
-            if (!anim.isLookForward()){
-                anim.setLookForward(true);
-            }
-//            anim.moveRight();
-            body.applyForceToCenter(new Vector2(1000000,0),true);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.UP))     body.applyForceToCenter(new Vector2(0,1000000),true);
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN))     body.applyForceToCenter(new Vector2(0,-1000000),true);
-
-
-
-        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_0) && camera.zoom >0) {
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_0) && camera.zoom > 0) {
             camera.zoom -= 0.01f;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_1) && camera.zoom < 3) {
             camera.zoom += 0.01f;
         }
-//        if (anim.getPositionX() + anim.getWidth() >= Gdx.graphics.getWidth()) anim.setLookForward(false);
-//        if (anim.getPositionX() <= 0) anim.setLookForward(true);
+
+
+        anim.setTime(Gdx.graphics.getDeltaTime());
+
+        ScreenUtils.clear(192, 232, 236, 256);
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+            exitScreen();
+        }
+
+        int speed = 3;
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+            camera.position.x -= speed;
+            if (anim.isLookForward()) {
+                anim.setLookForward(false);
+            }
+//            anim.moveLeft();
+            body.applyForceToCenter(new Vector2(-1000000, 0), true);
+//            anim.setLookForward(false);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            camera.position.x += speed;
+            if (!anim.isLookForward()) {
+                anim.setLookForward(true);
+            }
+//            anim.moveRight();
+            body.applyForceToCenter(new Vector2(1000000, 0), true);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) body.applyForceToCenter(new Vector2(0, 1000000), true);
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) body.applyForceToCenter(new Vector2(0, -1000000), true);
+
         if (anim.getFrame().isFlipX() && anim.isLookForward()) anim.getFrame().flip(true, false);
         if (!anim.getFrame().isFlipX() && !anim.isLookForward()) anim.getFrame().flip(true, false);
 
@@ -129,16 +113,10 @@ public class GameScreen implements Screen {
 
         spriteBatch.setProjectionMatrix(camera.combined);
         spriteBatch.begin();
-//        spriteBatch.draw(texture.getTexture(), 0, 0, texture.getWidth(), texture.getHeight());
-        bodyRectangle.x = body.getPosition().x - bodyRectangle.width/2;
-        bodyRectangle.y = body.getPosition().y - bodyRectangle.height/2;
+        bodyRectangle.x = body.getPosition().x - bodyRectangle.width / 2;
+        bodyRectangle.y = body.getPosition().y - bodyRectangle.height / 2;
         spriteBatch.draw(anim.getFrame(), bodyRectangle.x, bodyRectangle.y, bodyRectangle.width, bodyRectangle.height);
         spriteBatch.end();
-
-
-        menuRect.set(anim.getPositionX(), anim.getPositionY(), anim.getWidth(), anim.getHeight());
-
-
     }
 
     @Override
@@ -164,7 +142,7 @@ public class GameScreen implements Screen {
     }
 
     private void exitScreen() {
-        dispose();
+        this.dispose();
         anim.dispose();
         game.setScreen(new MenuScreen(game));
     }

@@ -151,7 +151,7 @@
   <object id="53" name="hero" x="70" y="320.667" width="70" height="100">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
-    <property name="density" value="1"/>
+    <property name="density" value="0"/>
     <property name="friction" value="1"/>
     <property name="gravityScale" value="20"/>
     <property name="restitution" value="0.3"/>

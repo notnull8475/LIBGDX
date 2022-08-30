@@ -5,9 +5,6 @@
  <tileset firstgid="289" source="mushroom.tsx"/>
  <tileset firstgid="345" source="buildings.tsx"/>
  <tileset firstgid="457" source="candy.tsx"/>
- <imagelayer id="13" name="Слой изображений 1" repeatx="1" repeaty="1">
-  <image source="../../../../GRAPHICS/platfofrmer/Base pack/bg.png" width="256" height="256"/>
- </imagelayer>
  <layer id="1" name="main" width="34" height="15">
   <data encoding="base64" compression="zlib">
    eJzzYGQYcODBCMEDDUbdQX13vB4E7tgFxQPtDhig1D3UTh/kuodW6ZRU99A6v6C7Zxcappc7iAUgNxxmoD6GAWLUHoHi6zTAMEALs4nFN8h0x2ABAP1qX4E=
@@ -18,12 +15,12 @@
    eJxjYBgFo2AUjIJRMArwgzNQPNDgFBQPNBgs7iAHAAAD8gTB
   </data>
  </layer>
- <layer id="6" name="boxes" width="34" height="15">
+ <layer id="6" name="boxes" width="34" height="15" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjAIGhqKBdgABMNjdRwgQcj+6PD71Qz0sRsHAAgCDOQKt
   </data>
  </layer>
- <layer id="7" name="circles" width="34" height="15">
+ <layer id="7" name="circles" width="34" height="15" visible="0">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjALCQI5poF0AAbIUukNpmPhjFIwCcgEAoE8Agw==
   </data>
@@ -160,17 +157,10 @@
   </object>
  </objectgroup>
  <objectgroup id="14" name="hero">
-  <properties>
-   <property name="BodyType" value="DynamicBody"/>
-   <property name="density" value="1"/>
-   <property name="friction" value="1"/>
-   <property name="gravityScale" value="1.0"/>
-   <property name="restitution" value="0.3"/>
-  </properties>
-  <object id="25" name="hero" x="210" y="490" width="70" height="100">
+  <object id="25" name="hero" x="210" y="490" width="70" height="90">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
-    <property name="density" value="1"/>
+    <property name="density" value="0"/>
     <property name="friction" value="1"/>
     <property name="gravityScale" value="1.0"/>
     <property name="restitution" value="0.3"/>
@@ -185,7 +175,7 @@
    <property name="gravityScale" value="1.0"/>
    <property name="restitution" value="0.3"/>
   </properties>
-  <object id="15" x="490" y="700" width="70" height="70">
+  <object id="15" name="box" x="490" y="700" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
     <property name="density" value="1"/>
@@ -194,7 +184,7 @@
     <property name="restitution" value="0.3"/>
    </properties>
   </object>
-  <object id="16" x="1050" y="700" width="70" height="70">
+  <object id="16" name="box" x="1050" y="700" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
     <property name="density" value="1"/>
@@ -203,7 +193,7 @@
     <property name="restitution" value="0.3"/>
    </properties>
   </object>
-  <object id="17" x="1330" y="700" width="70" height="70">
+  <object id="17" name="box" x="1330" y="700" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
     <property name="density" value="1"/>
@@ -212,7 +202,7 @@
     <property name="restitution" value="0.3"/>
    </properties>
   </object>
-  <object id="18" x="1470" y="490" width="70" height="70">
+  <object id="18" name="box" x="1470" y="490" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
     <property name="density" value="1"/>
@@ -221,7 +211,7 @@
     <property name="restitution" value="0.3"/>
    </properties>
   </object>
-  <object id="19" x="1820" y="700" width="70" height="70">
+  <object id="19" name="box" x="1820" y="700" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
     <property name="density" value="1"/>
@@ -230,7 +220,7 @@
     <property name="restitution" value="0.3"/>
    </properties>
   </object>
-  <object id="20" x="1890" y="560" width="70" height="70">
+  <object id="20" name="box" x="1890" y="560" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
     <property name="density" value="1"/>
@@ -239,7 +229,7 @@
     <property name="restitution" value="0.3"/>
    </properties>
   </object>
-  <object id="21" x="2030" y="490" width="70" height="70">
+  <object id="21" name="ball" x="2030" y="490" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
     <property name="density" value="1"/>
@@ -249,12 +239,12 @@
    </properties>
    <ellipse/>
   </object>
-  <object id="22" x="770" y="630" width="70" height="70">
+  <object id="22" name="ball" x="770" y="630" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
-    <property name="density" value="1"/>
+    <property name="density" value="0"/>
     <property name="friction" value="1"/>
-    <property name="gravityScale" value="1.0"/>
+    <property name="gravityScale" value="0.3"/>
     <property name="restitution" value="0.3"/>
    </properties>
    <ellipse/>
