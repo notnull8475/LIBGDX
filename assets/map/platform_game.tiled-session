@@ -3,25 +3,68 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "map_2.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
         "base.tsx": {
             "scaleInDock": 0.5,
             "scaleInEditor": 0.75
         },
+        "buildings.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "candy.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ice.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "items.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "map_1.tmx": {
-            "scale": 0.49711640211640207,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                10,
+                11,
+                9,
+                15,
+                12
+            ],
+            "scale": 1.5,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 946.4584109414081,
-                "y": 421.4304720344845
+                "x": 229.99999999999997,
+                "y": 410.33333333333326
             }
+        },
+        "map_2.tmx": {
+            "expandedObjectLayers": [
+                10,
+                11,
+                9,
+                14,
+                12
+            ],
+            "scale": 0.33,
+            "selectedLayer": 10,
+            "viewCenter": {
+                "x": 1166.6666666666667,
+                "y": 503.030303030303
+            }
+        },
+        "mushroom.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "request_pack.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
         },
         "безымянный.tmx": {
             "scale": 0.75,
@@ -40,12 +83,25 @@
     "map.tileHeight": 70,
     "map.tileWidth": 70,
     "openFiles": [
+        "map_2.tmx",
+        "base.tsx",
+        "buildings.tsx",
+        "candy.tsx",
+        "mushroom.tsx",
+        "request_pack.tsx"
     ],
     "project": "platform_game.tiled-project",
     "recentFiles": [
+        "map_2.tmx",
+        "map_1.tmx",
+        "request_pack.tsx",
+        "mushroom.tsx",
+        "candy.tsx",
+        "buildings.tsx",
+        "base.tsx",
         "items.tsx",
-        "безымянный.tmx",
-        "base.tsx"
+        "ice.tsx",
+        "безымянный.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.spacing": 2,

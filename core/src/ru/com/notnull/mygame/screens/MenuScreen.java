@@ -22,7 +22,7 @@ public class MenuScreen implements Screen {
         this.game = game;
         spriteBatch = new SpriteBatch();
         img = new ImgTexture("finalmaybe.png",2);
-        startRect = new Rectangle(0, 0, img.getWidth(), img.getHeight());
+        startRect = new Rectangle(Gdx.graphics.getWidth()/2-img.getWidth()/2, Gdx.graphics.getHeight()/2-img.getHeight()/2, img.getWidth(), img.getHeight());
         shapeRenderer = new ShapeRenderer();
     }
 
@@ -35,7 +35,7 @@ public class MenuScreen implements Screen {
     public void render(float delta) {
         ScreenUtils.clear(Color.BLACK);
         spriteBatch.begin();
-        spriteBatch.draw(img.getTexture(), 0, 0, img.getWidth(), img.getHeight());
+        spriteBatch.draw(img.getTexture(), Gdx.graphics.getWidth()/2-img.getWidth()/2, Gdx.graphics.getHeight()/2-img.getHeight()/2, img.getWidth(), img.getHeight());
         spriteBatch.end();
 
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
