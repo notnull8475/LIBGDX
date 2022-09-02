@@ -1,0 +1,55 @@
+
+lollipop.png
+size: 504, 72
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+lollipopFruitGreen
+  rotate: false
+  xy: 0, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+lollipopFruitRed
+  rotate: false
+  xy: 72, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+lollipopFruitYellow
+  rotate: false
+  xy: 144, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+lollipopGreen
+  rotate: false
+  xy: 216, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+lollipopRed
+  rotate: false
+  xy: 288, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+lollipopWhiteGreen
+  rotate: false
+  xy: 360, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+lollipopWhiteRed
+  rotate: false
+  xy: 432, 2
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1

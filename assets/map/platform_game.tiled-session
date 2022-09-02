@@ -45,17 +45,17 @@
         },
         "map_2.tmx": {
             "expandedObjectLayers": [
-                10,
-                11,
-                9,
+                12,
                 14,
-                12
+                9,
+                11,
+                10
             ],
-            "scale": 0.33,
-            "selectedLayer": 10,
+            "scale": 0.25,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 1166.6666666666667,
-                "y": 503.030303030303
+                "x": 808,
+                "y": 666
             }
         },
         "mushroom.tsx": {
@@ -92,13 +92,13 @@
     ],
     "project": "platform_game.tiled-project",
     "recentFiles": [
-        "map_2.tmx",
-        "map_1.tmx",
         "request_pack.tsx",
         "mushroom.tsx",
         "candy.tsx",
         "buildings.tsx",
         "base.tsx",
+        "map_2.tmx",
+        "map_1.tmx",
         "items.tsx",
         "ice.tsx",
         "безымянный.tmx"
