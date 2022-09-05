@@ -6,6 +6,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.MapObject;
@@ -123,12 +124,15 @@ public class GameScreen implements Screen {
         spriteBatch.setProjectionMatrix(camera.combined);
         spriteBatch.begin();
 
-        if (actor.isDie() && !diedSound.isPlaying()){
+        if (actor.isDie() && !diedSound.isPlaying()) {
             music.stop();
             diedSound.play();
         }
 
-        if (gameOver) exitScreen();
+        if (gameOver) {
+            gameOver=false;
+            exitScreen();
+        }
 
         for (GameObject o : boxes) {
             if (!o.isDestroyed()) o.render();

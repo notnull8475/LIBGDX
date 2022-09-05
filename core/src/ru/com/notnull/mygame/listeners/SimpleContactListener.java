@@ -22,13 +22,6 @@ public class SimpleContactListener implements ContactListener {
                     GameScreen.bodies.add(b.getBody());
                     tmpB.setDestroyed(true);
                 }
-                if (tmpA.getName().equals("ground") && !tmpB.getName().equals("ground")) {
-                    tmpB.setOnGround(true);
-                }
-
-                if (!tmpA.getName().equals("ground") && tmpB.getName().equals("ground")) {
-                    tmpA.setOnGround(true);
-                }
 
                 if (tmpA.getName().equals("bottom") && tmpB.getName().equals("hero")) {
                     tmpB.setDie();
@@ -56,12 +49,6 @@ public class SimpleContactListener implements ContactListener {
                     tmpA = tmpB;
                     tmpB = tmp;
                 }
-
-                if (!tmpA.getName().equals("ground") && tmpB.getName().equals("ground")) {
-                    tmpA.setOnGround(false);
-                }
-
-
             }
         }
     }
