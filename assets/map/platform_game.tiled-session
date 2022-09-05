@@ -52,10 +52,10 @@
                 10
             ],
             "scale": 0.25,
-            "selectedLayer": 8,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 808,
-                "y": 666
+                "x": 1088,
+                "y": 738
             }
         },
         "mushroom.tsx": {

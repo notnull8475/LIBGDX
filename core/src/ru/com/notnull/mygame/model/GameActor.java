@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g3d.particles.influencers.DynamicsModifier;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -24,7 +25,6 @@ public class GameActor extends GameObject {
     private final Map<String, Anim> actions = new HashMap<>();
     //    Body body;
 //    PhysX physX;
-    private float time;
     //    private SpriteBatch batch;
     OrthographicCamera camera;
     Anim action;
@@ -36,22 +36,26 @@ public class GameActor extends GameObject {
 
     public GameActor(PhysX physX, SpriteBatch batch, MapObject object, OrthographicCamera camera) {
         super(physX, batch, object);
-        float animSpeed = 1 / 60f;
+        float animSpeed = 1 / 40f;
         actions.put(State.IDLE.toString(), new Anim("atlas/stay.atlas", "p1_front", Animation.PlayMode.NORMAL, animSpeed));
         actions.put(State.WALK.toString(), new Anim("atlas/walk.atlas", "p1_walk", Animation.PlayMode.LOOP, animSpeed));
         actions.put(State.JUMP.toString(), new Anim("atlas/jump.atlas", "p1_jump", Animation.PlayMode.NORMAL, animSpeed));
         actions.put(State.HURT.toString(), new Anim("atlas/hurt.atlas", "p1_hurt", Animation.PlayMode.NORMAL, animSpeed));
         actions.put(State.DUCK.toString(), new Anim("atlas/duck.atlas", "p1_duck", Animation.PlayMode.NORMAL, animSpeed));
-        time += Gdx.graphics.getDeltaTime();
         this.camera = camera;
-        this.body.setGravityScale(20);
+//        this.body.setGravityScale(20);
+        this.body.setFixedRotation(true);
         action = actions.get("IDLE");
+        System.out.println("mass " + body.getMass());
+        System.out.println(getJumpPower());
+        System.out.println(getMovePower());
+
     }
 
     public void render(Input input) {
         if (!this.isDie()) {
             camera.update();
-            this.setTime();
+            action.setTime(Gdx.graphics.getDeltaTime());
             rectangle.x = body.getPosition().x - rectangle.width / 2 * Const.PPM;
             rectangle.y = body.getPosition().y - rectangle.height / 2 * Const.PPM;
 
@@ -64,36 +68,27 @@ public class GameActor extends GameObject {
             } else if (input.isKeyJustPressed(Input.Keys.UP) || input.isKeyJustPressed(Input.Keys.SPACE)) {
                 if (!isJump) jump();
             } else {
-//            if (!body.isAwake())
-                if (!isJump)
+                if (body.getLinearVelocity().y<0.5){
+                    isJump = false;
                     action = actions.get("IDLE");
+                }
             }
-            System.out.println(body.getLinearVelocity().y);
-            if (body.getLinearVelocity().y == 0) {
-                isJump = false;
-            }
-            action.setTime(time);
             batch.draw(action.getFrame(), rectangle.x, rectangle.y, rectangle.width * Const.PPM, rectangle.height * Const.PPM);
             camera.position.x = body.getPosition().x;
             camera.position.y = body.getPosition().y;
         }
     }
 
-    private void setTime() {
-
-        time += Gdx.graphics.getDeltaTime();
-    }
-
     private void moveLeft() {
         action = actions.get("WALK");
         if (!action.getFrame().isFlipX()) action.getFrame().flip(true, false);
-        body.applyForceToCenter(new Vector2(-500, 0), true);
+        body.applyForceToCenter(new Vector2(-getMovePower(), 0), true);
     }
 
     private void moveRight() {
         action = actions.get("WALK");
         if (action.getFrame().isFlipX()) action.getFrame().flip(true, false);
-        body.applyForceToCenter(new Vector2(500, 0), true);
+        body.applyForceToCenter(new Vector2(getMovePower(), 0), true);
     }
 
     private void duck() {
@@ -101,14 +96,23 @@ public class GameActor extends GameObject {
     }
 
     private void jump() {
-        if (isOnGround()) {
-            isMove = true;
-            isJump = true;
-            action = actions.get("JUMP");
-            body.applyLinearImpulse(new Vector2(0, 80), new Vector2(rectangle.x, rectangle.y + 10), true);
-        }
+        isMove = true;
+        isJump = true;
+        action = actions.get("JUMP");
+        body.applyLinearImpulse(new Vector2(0, getJumpPower()), new Vector2(rectangle.x, rectangle.y + 10), true);
     }
 
+    private float getMovePower() {
+        float power = body.getMass() * Const.bigG * Const.moveSpeed;
+        if (Math.abs(body.getLinearVelocity().x) >= 15) {
+            power = body.getMass() * Const.bigG;
+        }
+        return power;
+    }
+
+    private float getJumpPower() {
+        return body.getMass() * Const.bigG * Const.jumpPower;
+    }
 
     public void dispose() {
         for (Anim a : actions.values()) {

@@ -14,7 +14,7 @@ public class PhysX {
     private final Box2DDebugRenderer box2DDebugRenderer;
 
     public PhysX() {
-        world = new World(new Vector2(0, -9.81f), true);
+        world = new World(new Vector2(0, -Const.bigG), true);
         world.setContactListener(new SimpleContactListener());
         box2DDebugRenderer = new Box2DDebugRenderer();
     }
