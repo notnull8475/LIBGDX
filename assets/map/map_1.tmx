@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="27" height="12" tilewidth="70" tileheight="70" infinite="0" nextlayerid="16" nextobjectid="56">
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="27" height="12" tilewidth="70" tileheight="70" infinite="0" nextlayerid="16" nextobjectid="58">
  <tileset firstgid="1" source="base.tsx"/>
  <tileset firstgid="177" source="buildings.tsx"/>
- <imagelayer id="4" name="bg" repeatx="1" repeaty="1">
-  <image source="bg.png" width="256" height="256"/>
- </imagelayer>
  <layer id="13" name="water" width="27" height="12">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjCQQg4RpDaKQ8FCwCwAr9gMx
@@ -38,93 +35,66 @@
    <property name="gravityScale" value="1.0"/>
    <property name="restitution" value="0"/>
   </properties>
-  <object id="30" x="350" y="350" width="210" height="70">
+  <object id="30" name="ground" x="350" y="350" width="210" height="70">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="density" value="1"/>
-    <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
+    <property name="friction" value="0.7"/>
+    <property name="gravityScale" value="1.0"/>
     <property name="restitution" value="0"/>
    </properties>
   </object>
-  <object id="31" x="0" y="560" width="700" height="280">
+  <object id="31" name="ground" x="0" y="560" width="700" height="280">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="density" value="1"/>
-    <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
+    <property name="friction" value="0.7"/>
+    <property name="gravityScale" value="1.0"/>
     <property name="restitution" value="0"/>
    </properties>
   </object>
-  <object id="34" x="910" y="490" width="980" height="350">
+  <object id="34" name="ground" x="910" y="490" width="980" height="350">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="density" value="1"/>
-    <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
+    <property name="friction" value="0.7"/>
+    <property name="gravityScale" value="1.0"/>
     <property name="restitution" value="0"/>
    </properties>
   </object>
-  <object id="35" x="1190" y="420" width="700" height="70">
+  <object id="35" name="ground" x="1190" y="420" width="700" height="70">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="density" value="1"/>
-    <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
+    <property name="friction" value="0.7"/>
+    <property name="gravityScale" value="1.0"/>
     <property name="restitution" value="0"/>
    </properties>
   </object>
-  <object id="36" x="1260" y="350" width="630" height="70">
+  <object id="36" name="ground" x="1260" y="350" width="630" height="70">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="density" value="1"/>
-    <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
+    <property name="friction" value="0.7"/>
+    <property name="gravityScale" value="1.0"/>
     <property name="restitution" value="0"/>
    </properties>
   </object>
-  <object id="37" x="1400" y="70" width="350" height="280">
+  <object id="41" name="ground" x="840" y="490" width="70" height="70">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="density" value="1"/>
-    <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
+    <property name="friction" value="0.7"/>
+    <property name="gravityScale" value="1.0"/>
     <property name="restitution" value="0"/>
    </properties>
   </object>
-  <object id="38" x="1400" y="0" width="70" height="70">
+  <object id="56" name="bottom" x="678.788" y="815.152" width="269.697" height="21.2121">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="density" value="1"/>
-    <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
-    <property name="restitution" value="0"/>
-   </properties>
-  </object>
-  <object id="39" x="1540" y="0" width="70" height="70">
-   <properties>
-    <property name="BodyType" value="StaticBody"/>
-    <property name="density" value="1"/>
-    <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
-    <property name="restitution" value="0"/>
-   </properties>
-  </object>
-  <object id="40" x="1680" y="0" width="70" height="70">
-   <properties>
-    <property name="BodyType" value="StaticBody"/>
-    <property name="density" value="1"/>
-    <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
-    <property name="restitution" value="0"/>
-   </properties>
-  </object>
-  <object id="41" x="840" y="490" width="70" height="70">
-   <properties>
-    <property name="BodyType" value="StaticBody"/>
-    <property name="density" value="1"/>
-    <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
+    <property name="friction" value="0.7"/>
+    <property name="gravityScale" value="1.0"/>
     <property name="restitution" value="0"/>
    </properties>
   </object>
@@ -166,49 +136,49 @@
    <property name="gravityScale" value="1.0"/>
    <property name="restitution" value="0.3"/>
   </properties>
-  <object id="47" x="420" y="280" width="70" height="70">
+  <object id="47" name="box1" x="420" y="280" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
-    <property name="density" value="1"/>
+    <property name="density" value="1.5"/>
     <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
-    <property name="restitution" value="0.1"/>
+    <property name="gravityScale" value="1.0"/>
+    <property name="restitution" value="0.3"/>
    </properties>
   </object>
-  <object id="48" x="140" y="490" width="70" height="70">
+  <object id="48" name="box1" x="140" y="490" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
-    <property name="density" value="1"/>
+    <property name="density" value="1.5"/>
     <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
-    <property name="restitution" value="0.1"/>
+    <property name="gravityScale" value="1.0"/>
+    <property name="restitution" value="0.3"/>
    </properties>
   </object>
-  <object id="49" x="560" y="490" width="70" height="70">
+  <object id="49" name="box1" x="560" y="490" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
-    <property name="density" value="1"/>
+    <property name="density" value="1.5"/>
     <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
-    <property name="restitution" value="0.1"/>
+    <property name="gravityScale" value="1.0"/>
+    <property name="restitution" value="0.3"/>
    </properties>
   </object>
-  <object id="50" x="1050" y="420" width="70" height="70">
+  <object id="50" name="box1" x="1050" y="420" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
-    <property name="density" value="1"/>
+    <property name="density" value="1.5"/>
     <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
-    <property name="restitution" value="0.1"/>
+    <property name="gravityScale" value="1.0"/>
+    <property name="restitution" value="0.3"/>
    </properties>
   </object>
-  <object id="51" x="1120" y="420" width="70" height="70">
+  <object id="51" name="box1" x="1120" y="420" width="70" height="70">
    <properties>
     <property name="BodyType" value="DynamicBody"/>
-    <property name="density" value="1"/>
+    <property name="density" value="1.5"/>
     <property name="friction" value="1"/>
-    <property name="gravityScale" value="1"/>
-    <property name="restitution" value="0.1"/>
+    <property name="gravityScale" value="1.0"/>
+    <property name="restitution" value="0.3"/>
    </properties>
   </object>
  </objectgroup>
@@ -220,7 +190,7 @@
    <property name="gravityScale" value="1.0"/>
    <property name="restitution" value="0"/>
   </properties>
-  <object id="52" x="1470" y="210" width="70" height="140">
+  <object id="52" name="exitDoor" x="1470" y="210" width="70" height="140">
    <properties>
     <property name="BodyType" value="StaticBody"/>
     <property name="density" value="1.0"/>

@@ -29,10 +29,10 @@ import java.util.HashSet;
 
 public class GameScreen implements Screen {
     private final Game game;
-    private final SpriteBatch spriteBatch;
-    private final OrthographicCamera camera;
-    private final OrthogonalTiledMapRenderer mapRenderer;
-    private final PhysX physX;
+    private SpriteBatch spriteBatch;
+    private OrthographicCamera camera;
+    private OrthogonalTiledMapRenderer mapRenderer;
+    private PhysX physX;
     GameActor actor;
     HashSet<GameObject> boxes;
     TextureAtlas boxTextures;
@@ -41,16 +41,15 @@ public class GameScreen implements Screen {
     private Music diedSound;
     public static ArrayList<Body> bodies;
     public static boolean gameOver = false;
+    private TiledMap map;
 
 //    TODO переделать класс GameObject без хранения своего боди (так получается двойная ссылка)
 
     public GameScreen(Game game) {
         bodies = new ArrayList<>();
         this.game = game;
-        spriteBatch = new SpriteBatch();
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        TiledMap map = new TmxMapLoader().load("map/map_2.tmx");
-        mapRenderer = new OrthogonalTiledMapRenderer(map, Const.PPM);
+        spriteBatch = new SpriteBatch();
         physX = new PhysX();
         boxTextures = new TextureAtlas("items/boxes.atlas");
         lollipopTextures = new TextureAtlas("items/lollipop.atlas");
@@ -61,7 +60,11 @@ public class GameScreen implements Screen {
         diedSound.setLooping(false);
         diedSound.setOnCompletionListener(new SoundListener());
         camera.zoom = 0.1f;
+    }
 
+    public void init(TiledMap map){
+        this.map = map;
+        mapRenderer = new OrthogonalTiledMapRenderer(map, Const.PPM);
         Array<RectangleMapObject> objects = map.getLayers().get("static").getObjects().getByType(RectangleMapObject.class);
         objects.addAll(map.getLayers().get("water").getObjects().getByType(RectangleMapObject.class));
         objects.addAll(map.getLayers().get("exit").getObjects().getByType(RectangleMapObject.class));
@@ -84,7 +87,6 @@ public class GameScreen implements Screen {
         actor = new GameActor(physX, spriteBatch, map.getLayers().get("hero").getObjects().get("hero"), camera);
 
     }
-
 
     @Override
     public void show() {
@@ -115,7 +117,6 @@ public class GameScreen implements Screen {
         physX.debugDraw(camera);
 
         for (int i = 0; i < bodies.size(); i++) {
-//            ((GameObject) bodies.get(i).getUserData()).setDestroyed(true);
             physX.destroyBody(bodies.get(i));
             boxes.remove((GameObject) bodies.get(i).getUserData());
         }
@@ -140,8 +141,20 @@ public class GameScreen implements Screen {
         actor.render(Gdx.input);
 
         spriteBatch.end();
+        if (Const.mapNUmbChanged){
+            newGameScreen();
+        }
     }
 
+    public void newGameScreen(){
+        GameScreen gameScreen = new GameScreen(game);
+        System.out.println(Const.mapNumb);
+        System.out.println(Const.mapOfGameMaps.get(Const.mapNumb));
+        gameScreen.init(new TmxMapLoader().load(Const.mapOfGameMaps.get(Const.mapNumb)));
+        Const.mapNUmbChanged = false;
+        dispose();
+        game.setScreen(gameScreen);
+    }
     @Override
     public void resize(int width, int height) {
         camera.viewportWidth = width;

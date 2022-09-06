@@ -1,13 +1,14 @@
 package ru.com.notnull.mygame.listeners;
 
 import com.badlogic.gdx.physics.box2d.*;
+import ru.com.notnull.mygame.common.Const;
 import ru.com.notnull.mygame.model.GameObject;
 import ru.com.notnull.mygame.screens.GameScreen;
 
 public class SimpleContactListener implements ContactListener {
     @Override
     public void beginContact(Contact contact) {
-        Fixture a  = contact.getFixtureA();
+        Fixture a = contact.getFixtureA();
         Fixture b = contact.getFixtureB();
         if (a.getUserData() != null && b.getUserData() != null) {
             GameObject tmpB = (GameObject) b.getUserData();
@@ -29,6 +30,19 @@ public class SimpleContactListener implements ContactListener {
                 if (tmpA.getName().equals("hero") && tmpB.getName().equals("bottom")) {
                     tmpA.setDie();
                 }
+                if ((tmpA.getName().equals("exitDoor") && tmpB.getName().equals("hero")) || (tmpA.getName().equals("hero") && tmpB.getName().equals("exitDoor"))) {
+                    if (!Const.mapNUmbChanged) {
+//                        TODO дополнительное условие для проверки наличия карт
+                        if (Const.mapOfGameMaps.containsKey(Const.mapNumb + 1)) {
+                            System.out.println(Const.mapNumb);
+                            Const.mapNumb += 1;
+                        } else {
+                            Const.mapNumb = 1;
+
+                        }
+                        Const.mapNUmbChanged = true;
+                    }
+                }
 
 
             }
@@ -37,7 +51,7 @@ public class SimpleContactListener implements ContactListener {
 
     @Override
     public void endContact(Contact contact) {
-        Fixture a  = contact.getFixtureA();
+        Fixture a = contact.getFixtureA();
         Fixture b = contact.getFixtureB();
         if (a.getUserData() != null && b.getUserData() != null) {
             GameObject tmpB = (GameObject) b.getUserData();
