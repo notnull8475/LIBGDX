@@ -1,7 +1,6 @@
 package ru.com.notnull.mygame.model;
 
 import com.badlogic.gdx.graphics.g2d.PolygonRegion;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapObject;
@@ -11,7 +10,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.Body;
 import ru.com.notnull.mygame.PhysX;
 import ru.com.notnull.mygame.common.Const;
-import ru.com.notnull.mygame.common.GeometryMath;
 
 public class GameObject {
     protected TextureRegion texture;

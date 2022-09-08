@@ -9,9 +9,11 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
-import ru.com.notnull.mygame.beans.ImgTexture;
+import ru.com.notnull.mygame.ImgTexture;
+import ru.com.notnull.mygame.common.Const;
 
 public class MenuScreen implements Screen {
     private Game game;
@@ -24,6 +26,8 @@ public class MenuScreen implements Screen {
     private Sound error;
 
     public MenuScreen(Game game) {
+        Const.mapChanged = false;
+
         this.game = game;
         spriteBatch = new SpriteBatch();
         bg = new ImgTexture("menu_bg.png", 2);
@@ -62,11 +66,16 @@ public class MenuScreen implements Screen {
             int x = Gdx.input.getX();
             int y = Gdx.graphics.getHeight() - Gdx.input.getY();
             if (startMenuItem.contains(x, y)) {
-                dispose();
-                game.setScreen(new GameScreen(game));
+                newGameScreen();
             } else error.play();
-
         }
+    }
+
+    public void newGameScreen() {
+        GameScreen gameScreen = new GameScreen(game);
+        gameScreen.init(new TmxMapLoader().load(Const.mapOfGameMaps.get(Const.mapNumb)));
+        dispose();
+        game.setScreen(gameScreen);
     }
 
     @Override

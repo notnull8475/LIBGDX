@@ -1,4 +1,4 @@
-package ru.com.notnull.mygame.beans;
+package ru.com.notnull.mygame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

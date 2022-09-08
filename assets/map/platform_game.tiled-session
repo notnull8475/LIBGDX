@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map_2.tmx",
+    "activeFile": "map_1.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -30,17 +30,17 @@
         },
         "map_1.tmx": {
             "expandedObjectLayers": [
-                10,
-                11,
-                9,
+                12,
                 15,
-                12
+                9,
+                10,
+                11
             ],
-            "scale": 1.5,
+            "scale": 0.33,
             "selectedLayer": 8,
             "viewCenter": {
-                "x": 229.99999999999997,
-                "y": 410.33333333333326
+                "x": 1507.5757575757575,
+                "y": -83.33333333333326
             }
         },
         "map_2.tmx": {
@@ -48,13 +48,13 @@
                 12,
                 14,
                 9,
-                11,
-                10
+                10,
+                11
             ],
             "scale": 0.25,
-            "selectedLayer": 5,
+            "selectedLayer": 8,
             "viewCenter": {
-                "x": 1088,
+                "x": 1018,
                 "y": 738
             }
         },
@@ -88,16 +88,17 @@
         "buildings.tsx",
         "candy.tsx",
         "mushroom.tsx",
-        "request_pack.tsx"
+        "request_pack.tsx",
+        "map_1.tmx"
     ],
     "project": "platform_game.tiled-project",
     "recentFiles": [
-        "request_pack.tsx",
-        "mushroom.tsx",
-        "candy.tsx",
-        "buildings.tsx",
-        "base.tsx",
         "map_2.tmx",
+        "base.tsx",
+        "buildings.tsx",
+        "candy.tsx",
+        "mushroom.tsx",
+        "request_pack.tsx",
         "map_1.tmx",
         "items.tsx",
         "ice.tsx",
