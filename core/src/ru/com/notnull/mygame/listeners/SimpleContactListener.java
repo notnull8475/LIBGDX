@@ -34,7 +34,6 @@ public class SimpleContactListener implements ContactListener {
                     if (!Const.mapNUmbChanged) {
 //                        TODO дополнительное условие для проверки наличия карт
                         if (Const.mapOfGameMaps.containsKey(Const.mapNumb + 1)) {
-                            System.out.println(Const.mapNumb);
                             Const.mapNumb += 1;
                         } else {
                             Const.mapNumb = 1;

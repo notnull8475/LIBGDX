@@ -70,11 +70,11 @@ public class MenuScreen implements Screen {
     }
 
     public void newGameScreen(){
-        dispose();
         GameScreen gameScreen = new GameScreen(game);
         gameScreen.init(new TmxMapLoader().load(Const.mapOfGameMaps.get(Const.mapNumb)));
-        game.setScreen(gameScreen);
         Const.mapNUmbChanged = false;
+        dispose();
+        game.setScreen(gameScreen);
     }
 
     @Override

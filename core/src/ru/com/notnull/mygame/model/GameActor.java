@@ -5,11 +5,13 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g3d.particles.influencers.DynamicsModifier;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.PolygonShape;
 import ru.com.notnull.mygame.Anim;
 import ru.com.notnull.mygame.PhysX;
 import ru.com.notnull.mygame.common.Const;
@@ -36,7 +38,7 @@ public class GameActor extends GameObject {
 
     public GameActor(PhysX physX, SpriteBatch batch, MapObject object, OrthographicCamera camera) {
         super(physX, batch, object);
-        float animSpeed = 1 / 40f;
+        float animSpeed = 1 / 60f;
         actions.put(State.IDLE.toString(), new Anim("atlas/stay.atlas", "p1_front", Animation.PlayMode.NORMAL, animSpeed));
         actions.put(State.WALK.toString(), new Anim("atlas/walk.atlas", "p1_walk", Animation.PlayMode.LOOP, animSpeed));
         actions.put(State.JUMP.toString(), new Anim("atlas/jump.atlas", "p1_jump", Animation.PlayMode.NORMAL, animSpeed));
@@ -56,6 +58,7 @@ public class GameActor extends GameObject {
         if (!this.isDie()) {
             camera.update();
             action.setTime(Gdx.graphics.getDeltaTime());
+
             rectangle.x = body.getPosition().x - rectangle.width / 2 * Const.PPM;
             rectangle.y = body.getPosition().y - rectangle.height / 2 * Const.PPM;
 
@@ -73,11 +76,15 @@ public class GameActor extends GameObject {
                     action = actions.get("IDLE");
                 }
             }
+
             batch.draw(action.getFrame(), rectangle.x, rectangle.y, rectangle.width * Const.PPM, rectangle.height * Const.PPM);
             camera.position.x = body.getPosition().x;
             camera.position.y = body.getPosition().y;
+
         }
     }
+
+
 
     private void moveLeft() {
         action = actions.get("WALK");

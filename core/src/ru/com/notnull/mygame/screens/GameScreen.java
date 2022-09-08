@@ -148,8 +148,6 @@ public class GameScreen implements Screen {
 
     public void newGameScreen(){
         GameScreen gameScreen = new GameScreen(game);
-        System.out.println(Const.mapNumb);
-        System.out.println(Const.mapOfGameMaps.get(Const.mapNumb));
         gameScreen.init(new TmxMapLoader().load(Const.mapOfGameMaps.get(Const.mapNumb)));
         Const.mapNUmbChanged = false;
         dispose();
