@@ -31,7 +31,7 @@ public class SimpleContactListener implements ContactListener {
                     tmpA.setDie();
                 }
                 if ((tmpA.getName().equals("exitDoor") && tmpB.getName().equals("hero")) || (tmpA.getName().equals("hero") && tmpB.getName().equals("exitDoor"))) {
-                    if (!Const.mapNUmbChanged) {
+                    if (!Const.mapChanged) {
 //                        TODO дополнительное условие для проверки наличия карт
                         if (Const.mapOfGameMaps.containsKey(Const.mapNumb + 1)) {
                             Const.mapNumb += 1;
@@ -39,7 +39,7 @@ public class SimpleContactListener implements ContactListener {
                             Const.mapNumb = 1;
 
                         }
-                        Const.mapNUmbChanged = true;
+                        Const.mapChanged = true;
                     }
                 }
 

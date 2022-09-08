@@ -6,7 +6,6 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.MapObject;
@@ -46,6 +45,7 @@ public class GameScreen implements Screen {
 //    TODO переделать класс GameObject без хранения своего боди (так получается двойная ссылка)
 
     public GameScreen(Game game) {
+        Const.mapChanged = false;
         bodies = new ArrayList<>();
         this.game = game;
         camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -62,7 +62,7 @@ public class GameScreen implements Screen {
         camera.zoom = 0.1f;
     }
 
-    public void init(TiledMap map){
+    public void init(TiledMap map) {
         this.map = map;
         mapRenderer = new OrthogonalTiledMapRenderer(map, Const.PPM);
         Array<RectangleMapObject> objects = map.getLayers().get("static").getObjects().getByType(RectangleMapObject.class);
@@ -95,6 +95,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        if (Const.mapChanged) {
+            newGameScreen();
+        }
         ScreenUtils.clear(192, 232, 236, 256);
 
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_0) && camera.zoom > 0) {
@@ -102,11 +105,6 @@ public class GameScreen implements Screen {
         }
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_1) && camera.zoom < 3) {
             camera.zoom += 0.01f;
-        }
-
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
-            exitScreen();
         }
 
 
@@ -131,7 +129,10 @@ public class GameScreen implements Screen {
         }
 
         if (gameOver) {
-            gameOver=false;
+            gameOver = false;
+            exitScreen();
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             exitScreen();
         }
 
@@ -141,18 +142,17 @@ public class GameScreen implements Screen {
         actor.render(Gdx.input);
 
         spriteBatch.end();
-        if (Const.mapNUmbChanged){
-            newGameScreen();
-        }
+
     }
 
-    public void newGameScreen(){
+
+    public void newGameScreen() {
         GameScreen gameScreen = new GameScreen(game);
         gameScreen.init(new TmxMapLoader().load(Const.mapOfGameMaps.get(Const.mapNumb)));
-        Const.mapNUmbChanged = false;
         dispose();
         game.setScreen(gameScreen);
     }
+
     @Override
     public void resize(int width, int height) {
         camera.viewportWidth = width;
@@ -178,7 +178,6 @@ public class GameScreen implements Screen {
     private void exitScreen() {
         this.dispose();
         game.setScreen(new MenuScreen(game));
-
     }
 
     @Override
@@ -190,6 +189,7 @@ public class GameScreen implements Screen {
         music.dispose();
         physX.dispose();
         diedSound.dispose();
+
     }
 }
 

@@ -11,5 +11,5 @@ public class Const {
     public static float bigG = 9.81f;
     public static Map<Integer,String> mapOfGameMaps;
     public static int mapNumb = 1;
-    public static boolean mapNUmbChanged = false;
+    public static boolean mapChanged = false;
 }

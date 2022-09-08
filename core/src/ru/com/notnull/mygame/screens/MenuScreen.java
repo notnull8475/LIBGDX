@@ -26,6 +26,8 @@ public class MenuScreen implements Screen {
     private Sound error;
 
     public MenuScreen(Game game) {
+        Const.mapChanged = false;
+
         this.game = game;
         spriteBatch = new SpriteBatch();
         bg = new ImgTexture("menu_bg.png", 2);
@@ -69,10 +71,9 @@ public class MenuScreen implements Screen {
         }
     }
 
-    public void newGameScreen(){
+    public void newGameScreen() {
         GameScreen gameScreen = new GameScreen(game);
         gameScreen.init(new TmxMapLoader().load(Const.mapOfGameMaps.get(Const.mapNumb)));
-        Const.mapNUmbChanged = false;
         dispose();
         game.setScreen(gameScreen);
     }
